@@ -28,13 +28,10 @@ This project demonstrates a high-availability, auto-scaling backend service depl
 2.  **Deploy Manifests:**
     Apply the Kubernetes configurations in this order:
     ```bash
-    kubectl apply -f k8s/mongodb/statefulset.yaml
-    kubectl apply -f k8s/mongodb/service.yaml
     kubectl apply -f k8s/backend/configmap.yaml
-    kubectl apply -f k8s/backend/deployment.yaml
-    kubectl apply -f k8s/backend/service.yaml
-    kubectl apply -f k8s/backend/hpa.yaml
-    kubectl apply -f k8s/ingress/ingress.yaml
+    kubectl apply -f k8s/mongodb/
+    kubectl apply -f k8s/backend/
+    kubectl apply -f k8s/ingress/
     ```
 
 ## API Endpoints
@@ -70,4 +67,4 @@ To verify the system meets the acceptance criteria:
 * `server.js`: Backend API source code.
 * `Dockerfile`: Containerization instructions.
 * `k8s/`: All Kubernetes manifests (Deployment, HPA, StatefulSet, Ingress, Service).
-* `.github/workflows`: CI/CD configuration.
+* `.github/workflows/`: CI/CD configuration.
