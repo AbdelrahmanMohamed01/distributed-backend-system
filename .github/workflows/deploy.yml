@@ -7,7 +7,7 @@ on:
       
 jobs:
 
-  build-and-push:
+  build-and-push-docker-image:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,8 +37,8 @@ jobs:
         run: |
           docker push abdelrahmanmohamed01/distributed-backend:${{ github.sha }}
 
-  deploy:
-    needs: build-and-push
+  deploy-to-google-kubernetes-engine:
+    needs: build-and-push-docker-image
     runs-on: ubuntu-latest
 
     steps:
