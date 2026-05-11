@@ -61,7 +61,11 @@ jobs:
           location: me-central1-a
 
       - name: Apply Kubernetes Files
-        run: kubectl apply -f k8s/
+        run: |
+          kubectl apply -f k8s/backend/configmap.yaml
+          kubectl apply -f k8s/mongodb/
+          kubectl apply -f k8s/backend/
+          kubectl apply -f k8s/ingress/ingress.yaml:
 
       - name: Update Deployment Image
         run: |
