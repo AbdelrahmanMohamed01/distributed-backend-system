@@ -33,6 +33,15 @@ This project demonstrates a high-availability, auto-scaling backend service depl
     kubectl apply -f k8s/backend/
     kubectl apply -f k8s/ingress/
     ```
+3. **Update the Image:**
+    ```bash
+    kubectl set image deployment/backend-deploy \
+    backend=abdelrahmanmohamed01/distributed-backend:<NEW_TAG>
+    ```
+4. **Monitoring the Update:**
+    ```bash
+   kubectl rollout status deployment/backend-deploy
+    ```
 
 ## API Endpoints
 The following endpoints are accessible externally via the Ingress IP/Host:
