@@ -10,7 +10,7 @@ This project demonstrates a high-availability, auto-scaling backend service depl
     * **HPA:** Horizontal Pod Autoscaler that triggers scaling when CPU usage reaches 70%.
     * **Networking:** The API is exposed internally via a `ClusterIP` Service and externally via an `Ingress` controller.
 ## Explanation Video
-[Explanation Walkthrough Video on Youtube]()
+[Explanation Walkthrough Video on Youtube](https://youtu.be/Ffsqf8_XQPw)
 
 ## Setup & Deployment
 
