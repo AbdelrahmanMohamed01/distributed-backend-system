@@ -70,7 +70,7 @@ jobs:
       - name: Update Deployment Image
         run: |
           kubectl set image deployment/backend-deploy \
-          backend-deploy=abdelrahmanmohamed01/distributed-backend:${{ github.sha }}
+          backend=abdelrahmanmohamed01/distributed-backend:${{ github.sha }}
 
       - name: Verify Deployment
         run: |
