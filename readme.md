@@ -20,12 +20,12 @@ This project demonstrates a high-availability, auto-scaling backend service depl
 * `kubectl` and `docker` installed locally.
 
 ### 2. Deployment Steps
-1.  **Containerize the App:**
+1. **Containerize the App:**
     ```bash
     docker build -t abdelrahmanmohamed01/distributed-backend:latest .
     docker push abdelrahmanmohamed01/distributed-backend:latest
     ```
-2.  **Deploy Manifests:**
+2. **Deploy Manifests:**
     Apply the Kubernetes configurations in this order:
     ```bash
     kubectl apply -f k8s/backend/configmap.yaml
@@ -33,12 +33,18 @@ This project demonstrates a high-availability, auto-scaling backend service depl
     kubectl apply -f k8s/backend/
     kubectl apply -f k8s/ingress/
     ```
-3. **Update the Image:**
+    ReplicaSet setup:
+    ```bash
+   rs.initiate()
+   rs.add("mongodb-1.mongodb-service:27017")
+   rs.add("mongodb-2.mongodb-service:27017")
+    ```
+4. **Update the Image:**
     ```bash
     kubectl set image deployment/backend-deploy \
     backend=abdelrahmanmohamed01/distributed-backend:<NEW_TAG>
     ```
-4. **Monitoring the Update:**
+5. **Monitoring the Update:**
     ```bash
    kubectl rollout status deployment/backend-deploy
     ```
@@ -63,15 +69,15 @@ To verify the system meets the acceptance criteria:
   * ```bash
     kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while true; do wget -q -O- http://34.18.129.150; done"
     ``` 
-* **High Availability (Failover):** 
-  * Delete a backend pod; the system should remain functional.
-    * ```bash
-      kubectl delete pod <backend-pod-name>
-       ```
-  * Delete a MongoDB pod; verify that no data is lost and the replica set recovers.
-    * ```bash
-      kubectl delete pod mongo-0
-       ```
+* **High Availability (Failover):**
+    * Delete a backend pod; the system should remain functional.
+      * ```bash
+        kubectl delete pod <backend-pod-name>
+         ```
+    * Delete a MongoDB pod; verify that no data is lost and the replica set recovers.
+      * ```bash
+        kubectl delete pod mongo-0
+         ```
 ## Repository Contents
 * `server.js`: Backend API source code.
 * `Dockerfile`: Containerization instructions.
