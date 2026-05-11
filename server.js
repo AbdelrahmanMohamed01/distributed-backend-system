@@ -38,5 +38,11 @@ app.delete('/posts/:id', async (req, res) => {
     res.send({ message: 'Post deleted successfully' });
 });
 
+app.get('/posts/:id', async (req, res) => {
+    const post=await Post.findById(req.params.id);
+    if (!post) return res.status(404).send('Post not found');
+    res.send(post);
+});
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
