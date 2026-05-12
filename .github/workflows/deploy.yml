@@ -31,11 +31,11 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t abdelrahmanmohamed01/distributed-backend:latest .
+          docker build -t abdelrahmanmohamed01/distributed-backend:v5 .
 
       - name: Push Docker Image
         run: |
-          docker push abdelrahmanmohamed01/distributed-backend:latest
+          docker push abdelrahmanmohamed01/distributed-backend:v5
 
   deploy-to-google-kubernetes-engine:
     needs: build-and-push-docker-image
@@ -70,7 +70,7 @@ jobs:
       - name: Update Deployment Image
         run: |
           kubectl set image deployment/backend-deploy \
-          backend=abdelrahmanmohamed01/distributed-backend:latest
+          backend=abdelrahmanmohamed01/distributed-backend:v5
 
       - name: Verify Deployment
         run: |
