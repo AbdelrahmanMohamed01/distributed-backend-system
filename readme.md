@@ -41,8 +41,7 @@ This project demonstrates a high-availability, auto-scaling backend service depl
     ```
 4. **Update the Image:**
     ```bash
-    kubectl set image deployment/backend-deploy \
-    backend=abdelrahmanmohamed01/distributed-backend:<NEW_TAG>
+    kubectl set image deployment/backend-deploy backend=abdelrahmanmohamed01/distributed-backend:latest
     ```
 5. **Monitoring the Update:**
     ```bash
