@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: abdelrahmanmohamed01/distributed-backed:v1
+        image: abdelrahmanmohamed01/distributed-backend:v5
         ports:
           - containerPort: 3000
         
