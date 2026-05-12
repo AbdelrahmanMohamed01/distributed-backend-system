@@ -31,7 +31,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t abdelrahmanmohamed01/distributed-backend:latest .
+          docker build -t abdelrahmanmohamed01/distributed-backend:v5 .
 
       - name: Push Docker Image
         run: |
